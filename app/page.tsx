@@ -1,4 +1,5 @@
 import NavbarDemo from "@/components/resizable-navbar-demo";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
@@ -19,6 +20,8 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      <Footer />
     </main>
   );
 }
