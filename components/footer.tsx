@@ -91,9 +91,18 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="flex items-center justify-center w-9 h-9 rounded-full border border-white/20 text-neutral-400 hover:text-white hover:border-white/50 transition-colors duration-200"
+                  className="relative flex items-center justify-center w-9 h-9 rounded-full border border-white/20 text-neutral-400 hover:text-white transition-all duration-300 group"
+                  style={{ background: "rgba(255,255,255,0.04)" }}
                 >
-                  <Icon size={16} />
+                  {/* Blurry glow border on hover */}
+                  <span
+                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{
+                      boxShadow: "0 0 0 1px rgba(124,58,237,0.8), 0 0 8px 2px rgba(124,58,237,0.6), 0 0 20px 4px rgba(124,58,237,0.3), 0 0 35px 6px rgba(124,58,237,0.15)",
+                      borderRadius: "inherit",
+                    }}
+                  />
+                  <Icon size={16} className="relative z-10" />
                 </a>
               ))}
             </div>

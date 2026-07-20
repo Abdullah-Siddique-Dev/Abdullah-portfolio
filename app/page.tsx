@@ -1,6 +1,7 @@
 import NavbarDemo from "@/components/resizable-navbar-demo";
 import Hero from "@/components/hero";
 import About from "@/components/about";
+import Skills from "@/components/skills";
 import Footer from "@/components/footer";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <NavbarDemo />
       <Hero />
       <About />
+      <Skills />
       <Footer />
     </main>
   );

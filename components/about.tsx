@@ -170,26 +170,7 @@ export default function About() {
               innovative ideas into reality.
             </p>
 
-            {/* Stats row */}
-            <div className="grid grid-cols-3 gap-6 pt-2">
-              {[
-                { value: "1+", label: "Year Experience" },
-                { value: "10+", label: "Projects Built" },
-                { value: "5+", label: "Technologies" },
-              ].map((stat) => (
-                <div key={stat.label} className="flex flex-col gap-1">
-                  <span
-                    className="text-3xl font-black text-white"
-                    style={{ fontFamily: "var(--font-playfair), serif" }}
-                  >
-                    {stat.value}
-                  </span>
-                  <span className="text-xs text-neutral-500 tracking-wide uppercase">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
+
           </motion.div>
 
         </div>
