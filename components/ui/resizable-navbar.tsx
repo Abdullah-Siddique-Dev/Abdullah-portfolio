@@ -67,7 +67,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      className={cn("sticky inset-x-0 top-0 z-40 w-full", className)}
+      className={cn("sticky inset-x-0 top-0 z-40 w-full pt-4 pb-2", className)}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -85,23 +85,22 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(12px)" : "blur(0px)",
+        backdropFilter: "blur(12px)",
         boxShadow: visible
-          ? "0 0 0 1px rgba(255,255,255,0.08), 0 8px 32px rgba(0,0,0,0.4)"
-          : "none",
-        width: visible ? "90%" : "100%",
-        y: visible ? 12 : 0,
+          ? "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.12)"
+          : "0 2px 16px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.08)",
+        y: visible ? 8 : 8,
       }}
       transition={{
         type: "spring",
         stiffness: 200,
         damping: 50,
       }}
-      style={{ minWidth: "600px" }}
+      style={{ minWidth: "0px" }}
       className={cn(
-        "relative z-60 mx-auto hidden w-full flex-row items-center justify-between self-start rounded-full px-6 py-3 lg:flex",
-        "bg-[#1a1025]/90 border border-white/10",
-        visible && "bg-[#1a1025]/95",
+        "relative z-60 mx-auto hidden w-[calc(100%-3rem)] max-w-5xl flex-row items-center justify-between self-start rounded-xl px-5 py-3 lg:flex",
+        "bg-[#13111c]/90 border border-white/15",
+        visible && "bg-[#13111c]/98",
         className
       )}
     >
@@ -125,14 +124,27 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-4 py-2 text-neutral-300 hover:text-white transition-colors duration-200 tracking-widest text-xs uppercase"
+          className="relative px-4 py-2 text-neutral-400 hover:text-white transition-colors duration-300 tracking-widest text-xs uppercase font-bold"
           key={`link-${idx}`}
           href={item.link}
+          style={{
+            WebkitTextStroke: "0.5px rgba(255, 255, 255, 0.3)",
+            textShadow: "0 0 20px rgba(255, 255, 255, 0.1)",
+          }}
         >
+          {/* Triangle/cone glow from bottom - no box */}
           {hovered === idx && (
             <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-white/10"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="absolute left-1/2 -translate-x-1/2 bottom-0 pointer-events-none"
+              style={{
+                width: "120px",
+                height: "80px",
+                background: "radial-gradient(ellipse at center top, rgba(34, 211, 238, 0.6) 0%, rgba(6, 182, 212, 0.3) 30%, transparent 70%)",
+                filter: "blur(16px)",
+              }}
             />
           )}
           <span className="relative z-20">{item.name}</span>
@@ -257,25 +269,15 @@ export const NavbarLogo = () => {
   return (
     <a
       href="#"
-      className="relative z-20 flex items-center space-x-3 px-2 py-1 text-sm font-normal"
+      className="relative z-20 flex items-center px-1 py-1 shrink-0"
     >
-      {/* Abstract logo mark matching the screenshot style */}
-      <div className="flex items-center justify-center w-9 h-9 rounded-md bg-white/10 border border-white/20">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <rect x="2" y="2" width="9" height="9" rx="2" fill="white" fillOpacity="0.9" />
-          <rect x="13" y="2" width="9" height="9" rx="2" fill="white" fillOpacity="0.5" />
-          <rect x="2" y="13" width="9" height="9" rx="2" fill="white" fillOpacity="0.5" />
-          <rect x="13" y="13" width="9" height="9" rx="2" fill="white" fillOpacity="0.2" />
-        </svg>
-      </div>
-      <div className="flex flex-col leading-tight">
-        <span className="font-bold text-white text-sm tracking-wide uppercase">
-          Abdullah
-        </span>
-        <span className="text-neutral-400 text-[10px] tracking-widest uppercase">
-          Siddique
-        </span>
-      </div>
+      <img
+        src="/logo.png"
+        alt="Abdullah Siddique Logo"
+        width={65}
+        height={65}
+        className="object-contain"
+      />
     </a>
   );
 };
@@ -298,7 +300,7 @@ export const NavbarButton = ({
   | React.ComponentPropsWithoutRef<"button">
 )) => {
   const baseStyles =
-    "px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
+    "px-4 py-2 rounded-lg text-xs font-bold tracking-widest uppercase relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 
   const variantStyles = {
     primary:

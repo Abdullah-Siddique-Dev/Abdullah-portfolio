@@ -4,53 +4,86 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandX,
-  IconBrandInstagram,
+  IconBrandWhatsapp,
 } from "@tabler/icons-react";
 
 const socialLinks = [
-  { icon: IconBrandX, href: "#", label: "X (Twitter)" },
-  { icon: IconBrandInstagram, href: "#", label: "Instagram" },
-  { icon: IconBrandGithub, href: "#", label: "GitHub" },
-  { icon: IconBrandLinkedin, href: "#", label: "LinkedIn" },
+  { icon: IconBrandLinkedin,  href: "#", label: "LinkedIn" },
+  { icon: IconBrandGithub,    href: "#", label: "GitHub" },
+  { icon: IconBrandX,         href: "#", label: "Twitter" },
+  { icon: IconBrandWhatsapp,  href: "#", label: "WhatsApp" },
 ];
 
 const footerColumns = [
   {
-    title: "Projects",
+    title: "General",
     links: [
-      { label: "Web Apps", href: "#" },
-      { label: "Open Source", href: "#" },
+      { label: "Home",       href: "#home" },
+      { label: "About Me",   href: "#about" },
+      { label: "Projects",   href: "#projects" },
+      { label: "Blog",       href: "#blog" },
+      { label: "Contact",    href: "#contact" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { label: "Case Studies", href: "#" },
-      { label: "Tech Stack", href: "#" },
+      { label: "Resume",       href: "#" },
+      { label: "GitHub",       href: "#" },
+      { label: "Certificates", href: "#" },
+      { label: "Skills",       href: "#skills" },
+      { label: "Experience",   href: "#experience" },
     ],
   },
   {
     title: "Connect",
     links: [
-      { label: "About", href: "#" },
-      { label: "Contact", href: "#" },
+      { label: "LinkedIn", href: "#" },
+      { label: "GitHub",   href: "#" },
+      { label: "Email",    href: "#" },
+      { label: "Twitter",  href: "#" },
     ],
   },
 ];
 
 export default function Footer() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="relative w-full bg-[#0a0a0a] border-t border-white/10 overflow-hidden">
-      {/* Top section */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-12 pb-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* Left: tagline + socials */}
-          <div className="flex flex-col gap-6">
-            <p className="text-sm text-neutral-400 leading-relaxed max-w-[200px]">
-              Abdullah is a full-stack developer building modern and intuitive
-              web experiences.
+    <footer className="relative w-full bg-[#0a0a0a] border-t border-white/10 overflow-hidden min-h-[420px]">
+
+      {/* BIG watermark logo — top right corner */}
+      <img
+        src="/logo.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute select-none pointer-events-none hidden md:block"
+        style={{
+          width: "600px",
+          height: "600px",
+          objectFit: "contain",
+          opacity: 0.1,
+          filter: "brightness(3) contrast(1.5)",
+          right: "-80px",
+          top: "-60px",
+          zIndex: 0,
+        }}
+      />
+
+      {/* Main content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-12 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 items-start">
+
+          {/* Left: logo + bio + socials */}
+          <div className="flex flex-col gap-5">
+            <img
+              src="/logo.png"
+              alt="Abdullah Siddique Logo"
+              width={130}
+              height={130}
+              className="object-contain"
+            />
+            <p className="text-sm text-neutral-400 leading-relaxed max-w-[220px]">
+              Computer Science student, MERN Stack Developer, and problem solver
+              passionate about building impactful digital solutions.
             </p>
             <div className="flex items-center gap-3">
               {socialLinks.map(({ icon: Icon, href, label }) => (
@@ -69,13 +102,9 @@ export default function Footer() {
           {/* Link columns */}
           {footerColumns.map((col) => (
             <div key={col.title} className="flex flex-col gap-4">
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-semibold text-white">
-                  {col.title}
-                </span>
-                {/* decorative line */}
-                <div className="flex-1 h-px bg-white/10" />
-              </div>
+              <span className="text-sm font-semibold text-white">
+                {col.title}
+              </span>
               <ul className="flex flex-col gap-2">
                 {col.links.map((link) => (
                   <li key={link.label}>
@@ -90,45 +119,33 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+
         </div>
       </div>
 
-      {/* Big outlined name */}
+      {/* Big outlined name — half hidden at footer bottom */}
       <div
-        className="relative z-0 select-none pointer-events-none px-4 -mb-4"
+        className="relative z-0 select-none pointer-events-none overflow-hidden"
+        style={{ height: "clamp(3rem, 10vw, 8rem)" }}
         aria-hidden="true"
       >
         <p
-          className="text-center font-black uppercase leading-none tracking-tight"
+          className="text-center font-black uppercase leading-none tracking-tight absolute bottom-0 left-0 right-0 translate-y-[35%]"
           style={{
             fontSize: "clamp(3.5rem, 14vw, 11rem)",
             color: "transparent",
-            WebkitTextStroke: "1px rgba(255,255,255,0.12)",
+            WebkitTextStroke: "1.5px rgba(255,255,255,0.18)",
+            textShadow: `
+              0 0 8px rgba(255,255,255,0.25),
+              0 0 20px rgba(255,255,255,0.12),
+              0 0 40px rgba(255,255,255,0.06)
+            `,
           }}
         >
           Abdullah
         </p>
       </div>
 
-      {/* Bottom bar */}
-      <div className="relative z-10 border-t border-white/10 mt-2">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-neutral-500">
-            © {year} Abdullah / All rights reserved
-          </p>
-          <nav className="flex items-center gap-5">
-            {["GitHub", "LinkedIn", "Contact"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="text-xs text-neutral-500 hover:text-white transition-colors duration-200"
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </div>
     </footer>
   );
 }

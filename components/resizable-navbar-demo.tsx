@@ -33,14 +33,9 @@ export default function NavbarDemo() {
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
-          <div className="flex items-center gap-3">
-            <NavbarButton variant="secondary" href="#contact">
-              Hire Me
-            </NavbarButton>
-            <NavbarButton variant="primary" href="#projects">
-              View Work
-            </NavbarButton>
-          </div>
+          <NavbarButton variant="primary" href="#contact" className="shrink-0">
+            Hire Me
+          </NavbarButton>
         </NavBody>
 
         {/* Mobile Navigation */}
@@ -65,37 +60,30 @@ export default function NavbarDemo() {
                 initial={{ x: -30, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: idx * 0.07, type: "spring", stiffness: 300, damping: 30 }}
-                className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-neutral-300 hover:text-white hover:bg-white/10 transition-colors group"
+                whileHover={{ scale: 1.02 }}
+                className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-neutral-400 hover:text-white transition-colors group relative"
               >
-                {/* Animated accent line */}
-                <motion.span
-                  className="w-0 h-px bg-violet-500 group-hover:w-4 transition-all duration-300"
+                {/* Soft glow on hover - no box */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute left-0 bottom-0 pointer-events-none"
+                  style={{
+                    width: "100px",
+                    height: "60px",
+                    background: "radial-gradient(ellipse at left center, rgba(34, 211, 238, 0.4) 0%, rgba(6, 182, 212, 0.2) 40%, transparent 70%)",
+                    filter: "blur(20px)",
+                  }}
                 />
-                <span className="text-sm tracking-widest uppercase font-medium">
+                
+                {/* Animated accent line */}
+                <motion.span className="w-0 h-px bg-cyan-400 group-hover:w-4 transition-all duration-300 relative z-10" />
+                <span className="text-sm tracking-widest uppercase font-medium relative z-10">
                   {item.name}
                 </span>
               </motion.a>
             ))}
-
-            {/* Bottom actions */}
-            <div className="mt-auto pt-6 flex w-full flex-col gap-3 border-t border-white/10">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="secondary"
-                className="w-full justify-center"
-                href="#contact"
-              >
-                Hire Me
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full justify-center"
-                href="#projects"
-              >
-                View Work
-              </NavbarButton>
-            </div>
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
