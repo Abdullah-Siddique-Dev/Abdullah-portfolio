@@ -1,5 +1,6 @@
 import NavbarDemo from "@/components/resizable-navbar-demo";
 import Hero from "@/components/hero";
+import About from "@/components/about";
 import Footer from "@/components/footer";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <main className="flex flex-col min-h-screen bg-[#0d0a18]">
       <NavbarDemo />
       <Hero />
+      <About />
       <Footer />
     </main>
   );

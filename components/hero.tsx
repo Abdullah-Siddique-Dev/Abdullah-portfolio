@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import LightRays from "@/components/ui/LightRays";
+import SoftAurora from "@/components/ui/SoftAurora";
 
 const roles = ["Full Stack Developer", "MERN Stack Developer", "PERN Stack Developer"];
 
@@ -52,6 +53,37 @@ export default function Hero() {
       id="home"
       className="relative w-full min-h-screen flex items-center overflow-hidden bg-[#0d0a18]"
     >
+      {/* ── SoftAurora — centered background ── */}
+      <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
+        <div
+          style={{
+            width: "100%",
+            height: "80%",
+            position: "relative",
+            opacity: 1,
+            maskImage: "linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.95) 55%, black 65%)",
+            WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.95) 55%, black 65%)",
+          }}
+        >
+          <SoftAurora
+            speed={0.4}
+            scale={1.5}
+            brightness={1.4}
+            color1="#7c3aed"
+            color2="#7c3aed"
+            noiseFrequency={2.0}
+            noiseAmplitude={0.8}
+            bandHeight={0.5}
+            bandSpread={1.0}
+            octaveDecay={0.12}
+            layerOffset={0.3}
+            colorSpeed={0.6}
+            enableMouseInteraction={false}
+            mouseInfluence={0}
+          />
+        </div>
+      </div>
+
       {/* ── LightRays — top-right corner ── */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none z-0">
         <LightRays
@@ -164,69 +196,65 @@ export default function Hero() {
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative flex-shrink-0 flex items-center justify-center"
+          className="relative shrink-0 flex items-center justify-center"
+          style={{ width: "320px", height: "320px" }}
         >
-          {/* Outer decorative ring */}
+          {/* Left side — strong violet/blue blur */}
           <div
-            className="absolute w-[380px] h-[380px] lg:w-[440px] lg:h-[440px] rounded-full"
+            className="absolute pointer-events-none"
             style={{
-              background:
-                "conic-gradient(from 180deg, rgba(124,58,237,0.4), rgba(6,182,212,0.3), rgba(124,58,237,0.4))",
-              filter: "blur(2px)",
+              left: "-70px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "180px",
+              height: "320px",
+              background: "radial-gradient(ellipse at right, rgba(124,58,237,0.7) 0%, rgba(59,130,246,0.4) 40%, transparent 70%)",
+              filter: "blur(35px)",
+              zIndex: 0,
             }}
           />
 
-          {/* Blurred half-circle glow — right side */}
+          {/* Right side — softer cyan blur */}
           <div
-            className="absolute right-[-60px] top-1/2 -translate-y-1/2 w-[200px] h-[340px] rounded-full pointer-events-none"
+            className="absolute pointer-events-none"
             style={{
-              background:
-                "radial-gradient(ellipse at left, rgba(6,182,212,0.35) 0%, transparent 70%)",
-              filter: "blur(40px)",
+              right: "-70px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "180px",
+              height: "320px",
+              background: "radial-gradient(ellipse at left, rgba(6,182,212,0.45) 0%, rgba(124,58,237,0.2) 40%, transparent 70%)",
+              filter: "blur(35px)",
+              zIndex: 0,
             }}
           />
 
-          {/* Blurred half-circle glow — left side */}
+          {/* Thin glowing ring */}
           <div
-            className="absolute left-[-60px] top-1/2 -translate-y-1/2 w-[200px] h-[340px] rounded-full pointer-events-none"
+            className="absolute rounded-full"
             style={{
-              background:
-                "radial-gradient(ellipse at right, rgba(124,58,237,0.35) 0%, transparent 70%)",
-              filter: "blur(40px)",
+              width: "310px",
+              height: "310px",
+              background: "transparent",
+              boxShadow: "0 0 0 2px rgba(124,58,237,0.6), 0 0 30px rgba(124,58,237,0.3)",
+              zIndex: 2,
             }}
           />
 
-          {/* Inner solid circle background */}
-          <div
-            className="absolute w-[340px] h-[340px] lg:w-[400px] lg:h-[400px] rounded-full"
+          {/* Photo — perfect circle */}
+          <img
+            src="/abdullah.jpeg"
+            alt="Abdullah Siddique"
             style={{
-              background:
-                "radial-gradient(circle, rgba(109,40,217,0.25) 0%, rgba(13,10,24,0.8) 70%)",
+              width: "300px",
+              height: "300px",
+              objectFit: "cover",
+              objectPosition: "top center",
+              borderRadius: "50%",
+              position: "relative",
+              zIndex: 1,
             }}
           />
-
-          {/* Photo */}
-          <div className="relative w-[300px] h-[360px] lg:w-[340px] lg:h-[420px] z-10">
-            <img
-              src="/abdullah.jpeg"
-              alt="Abdullah Siddique"
-              className="w-full h-full object-cover object-top"
-              style={{
-                borderRadius: "40% 40% 48% 48%",
-                boxShadow:
-                  "0 0 0 3px rgba(124,58,237,0.4), 0 0 60px rgba(124,58,237,0.2), 0 0 120px rgba(6,182,212,0.15)",
-              }}
-            />
-            {/* Grain overlay */}
-            <div
-              className="absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay"
-              style={{
-                borderRadius: "40% 40% 48% 48%",
-                backgroundImage:
-                  "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-              }}
-            />
-          </div>
         </motion.div>
 
       </div>
