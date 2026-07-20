@@ -57,8 +57,8 @@ function SkillCard({ skill }: { skill: typeof skills[0] }) {
       <div
         className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{
-          boxShadow: `0 0 20px 2px ${skill.color}30, inset 0 0 20px 0px ${skill.color}10`,
-          border: `1px solid ${skill.color}40`,
+          boxShadow: `0 0 16px 2px rgba(124,58,237,0.25), inset 0 0 16px 0px rgba(124,58,237,0.08)`,
+          border: `1px solid rgba(124,58,237,0.35)`,
         }}
       />
     </motion.div>

@@ -35,9 +35,9 @@ function TypingEffect() {
   return (
     <span className="inline-flex items-center gap-1">
       <span
-        className="text-transparent bg-clip-text"
+        className="text-violet-400"
         style={{
-          backgroundImage: "linear-gradient(135deg, #a78bfa 0%, #7c3aed 50%, #06b6d4 100%)",
+          color: "#7c3aed",
         }}
       >
         {displayed}
@@ -107,17 +107,15 @@ export default function Hero() {
       <div
         className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background:
-            "radial-gradient(circle, rgba(109,40,217,0.18) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%)",
           filter: "blur(60px)",
         }}
       />
-      {/* Bottom-right cyan blob */}
+      {/* Bottom-right blob — same color */}
       <div
         className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none"
         style={{
-          background:
-            "radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(124,58,237,0.10) 0%, transparent 70%)",
           filter: "blur(60px)",
         }}
       />
@@ -187,7 +185,7 @@ export default function Hero() {
             animate={{ scaleX: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.55 }}
             className="w-24 h-px origin-left"
-            style={{ background: "linear-gradient(90deg, #7c3aed, #06b6d4)" }}
+            style={{ background: "#7c3aed" }}
           />
         </div>
 
@@ -199,7 +197,7 @@ export default function Hero() {
           className="relative shrink-0 flex items-center justify-center"
           style={{ width: "320px", height: "320px" }}
         >
-          {/* Left side — strong violet/blue blur */}
+          {/* Left side — violet blur */}
           <div
             className="absolute pointer-events-none"
             style={{
@@ -208,13 +206,13 @@ export default function Hero() {
               transform: "translateY(-50%)",
               width: "180px",
               height: "320px",
-              background: "radial-gradient(ellipse at right, rgba(124,58,237,0.7) 0%, rgba(59,130,246,0.4) 40%, transparent 70%)",
+              background: "radial-gradient(ellipse at right, rgba(124,58,237,0.6) 0%, transparent 70%)",
               filter: "blur(35px)",
               zIndex: 0,
             }}
           />
 
-          {/* Right side — softer cyan blur */}
+          {/* Right side — violet blur */}
           <div
             className="absolute pointer-events-none"
             style={{
@@ -223,7 +221,7 @@ export default function Hero() {
               transform: "translateY(-50%)",
               width: "180px",
               height: "320px",
-              background: "radial-gradient(ellipse at left, rgba(6,182,212,0.45) 0%, rgba(124,58,237,0.2) 40%, transparent 70%)",
+              background: "radial-gradient(ellipse at left, rgba(124,58,237,0.4) 0%, transparent 70%)",
               filter: "blur(35px)",
               zIndex: 0,
             }}

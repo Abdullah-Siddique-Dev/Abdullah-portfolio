@@ -94,11 +94,11 @@ export default function Footer() {
                   className="relative flex items-center justify-center w-9 h-9 rounded-full border border-white/20 text-neutral-400 hover:text-white transition-all duration-300 group"
                   style={{ background: "rgba(255,255,255,0.04)" }}
                 >
-                  {/* Blurry glow border on hover */}
+                  {/* Violet glow border on hover */}
                   <span
                     className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                     style={{
-                      boxShadow: "0 0 0 1px rgba(124,58,237,0.8), 0 0 8px 2px rgba(124,58,237,0.6), 0 0 20px 4px rgba(124,58,237,0.3), 0 0 35px 6px rgba(124,58,237,0.15)",
+                      boxShadow: "0 0 0 1px rgba(124,58,237,0.8), 0 0 12px 3px rgba(124,58,237,0.4)",
                       borderRadius: "inherit",
                     }}
                   />
@@ -144,11 +144,6 @@ export default function Footer() {
             fontSize: "clamp(3.5rem, 14vw, 11rem)",
             color: "transparent",
             WebkitTextStroke: "1.5px rgba(255,255,255,0.18)",
-            textShadow: `
-              0 0 8px rgba(255,255,255,0.25),
-              0 0 20px rgba(255,255,255,0.12),
-              0 0 40px rgba(255,255,255,0.06)
-            `,
           }}
         >
           Abdullah

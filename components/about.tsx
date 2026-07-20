@@ -90,9 +90,9 @@ export default function About() {
             className="relative flex justify-center"
           >
             {/* Left blur */}
-            <div className="absolute pointer-events-none" style={{ left: "-50px", top: "50%", transform: "translateY(-50%)", width: "130px", height: "110%", background: "radial-gradient(ellipse at right, rgba(124,58,237,0.6) 0%, rgba(59,130,246,0.3) 50%, transparent 70%)", filter: "blur(35px)", zIndex: 0 }} />
+            <div className="absolute pointer-events-none" style={{ left: "-50px", top: "50%", transform: "translateY(-50%)", width: "130px", height: "110%", background: "radial-gradient(ellipse at right, rgba(124,58,237,0.5) 0%, transparent 70%)", filter: "blur(35px)", zIndex: 0 }} />
             {/* Right blur */}
-            <div className="absolute pointer-events-none" style={{ right: "-50px", top: "50%", transform: "translateY(-50%)", width: "130px", height: "110%", background: "radial-gradient(ellipse at left, rgba(6,182,212,0.35) 0%, rgba(124,58,237,0.2) 50%, transparent 70%)", filter: "blur(35px)", zIndex: 0 }} />
+            <div className="absolute pointer-events-none" style={{ right: "-50px", top: "50%", transform: "translateY(-50%)", width: "130px", height: "110%", background: "radial-gradient(ellipse at left, rgba(124,58,237,0.35) 0%, transparent 70%)", filter: "blur(35px)", zIndex: 0 }} />
 
             {/* Square image wrapped in BorderGlow */}
             <BorderGlow
@@ -145,7 +145,7 @@ export default function About() {
             {/* Violet accent line */}
             <div
               className="w-16 h-[3px] rounded-full"
-              style={{ background: "linear-gradient(90deg, #7c3aed, #06b6d4)" }}
+              style={{ background: "#7c3aed" }}
             />
 
             {/* Body text */}

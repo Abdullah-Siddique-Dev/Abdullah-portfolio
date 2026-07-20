@@ -142,7 +142,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
               style={{
                 width: "120px",
                 height: "80px",
-                background: "radial-gradient(ellipse at center top, rgba(34, 211, 238, 0.6) 0%, rgba(6, 182, 212, 0.3) 30%, transparent 70%)",
+                background: "radial-gradient(ellipse at center top, rgba(124,58,237,0.5) 0%, transparent 70%)",
                 filter: "blur(16px)",
               }}
             />
@@ -309,7 +309,7 @@ export const NavbarButton = ({
       "bg-transparent text-neutral-300 hover:text-white border border-white/20 hover:border-white/40",
     dark: "bg-white text-black hover:bg-neutral-200",
     gradient:
-      "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-lg",
+      "bg-violet-600 text-white shadow-lg",
   };
 
   return (
