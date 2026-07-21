@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 interface Project {
@@ -49,10 +49,61 @@ const projects: Project[] = [
   },
 ];
 
-const CARD_HEIGHT = 420; // px — height of each card
-const STICK_TOP = 80;    // px — how far from top of viewport cards stick
+const CARD_HEIGHT = 520;
+const STICK_TOP   = 80;   // px from top of viewport — same for ALL cards
+const CARD_GAP    = 32;   // px gap between cards
 
 const Projects: React.FC = () => {
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const cards = cardRefs.current.filter(Boolean) as HTMLDivElement[];
+    if (!cards.length) return;
+
+    const update = () => {
+      const scrollY = window.scrollY;
+      const vh = window.innerHeight;
+
+      // Figure out which card index is currently "on top" (the frontmost visible card)
+      // A card is considered active once its sticky top edge has been reached
+      let activeIndex = 0;
+      cards.forEach((card, i) => {
+        // The slot wrapper is the parent
+        const slot = card.parentElement!;
+        const slotTop = slot.getBoundingClientRect().top + scrollY;
+        // Card becomes "active" once we've scrolled to its pin point
+        if (scrollY >= slotTop - STICK_TOP) {
+          activeIndex = i;
+        }
+      });
+
+      cards.forEach((card, i) => {
+        const depth = activeIndex - i; // 0 = active/front, >0 = buried behind
+        if (depth <= 0) {
+          // Front card or cards not yet reached — crisp, full scale
+          card.style.filter  = 'blur(0px)';
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1)';
+        } else {
+          // Buried cards — blur and scale down proportionally
+          const blurVal   = Math.min(depth * 3, 8);   // max 8px blur
+          const scaleVal  = Math.max(1 - depth * 0.03, 0.88);
+          const opacity   = Math.max(1 - depth * 0.15, 0.5);
+          card.style.filter  = `blur(${blurVal}px)`;
+          card.style.opacity = String(opacity);
+          card.style.transform = `scale(${scaleVal})`;
+        }
+        card.style.transformOrigin = 'top center';
+        card.style.transition = 'filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease';
+      });
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    update(); // run once on mount
+
+    return () => window.removeEventListener('scroll', update);
+  }, []);
+
   return (
     <section id="projects" className="relative bg-[#0d0a18] py-24">
 
@@ -71,13 +122,16 @@ const Projects: React.FC = () => {
         </p>
       </div>
 
-      {/* Stack container — total height gives scroll room for each card */}
+      {/*
+        Stack wrapper:
+        - paddingBottom gives scroll travel so each card has room to slide in
+        - Each slot is sticky at exactly the same `top` so all cards align perfectly
+      */}
       <div
         className="mx-auto px-6"
         style={{
           maxWidth: '62rem',
-          /* Each card after the first needs ~1 viewport of travel to scroll in */
-          paddingBottom: `${(projects.length - 1) * 100}vh`,
+          paddingBottom: `${(projects.length - 1) * (CARD_HEIGHT + CARD_GAP)}px`,
         }}
       >
         {projects.map((project, index) => (
@@ -85,21 +139,17 @@ const Projects: React.FC = () => {
             key={project.id}
             style={{
               position: 'sticky',
-              top: `${STICK_TOP + index * 8}px`,   // slight cascade offset
+              top: `${STICK_TOP}px`,
               zIndex: index + 1,
               height: `${CARD_HEIGHT}px`,
-              marginBottom: index < projects.length - 1 ? '-8px' : 0,
+              marginBottom: index < projects.length - 1 ? `${CARD_GAP}px` : 0,
             }}
           >
             <div
               className="project-card"
-              style={{
-                /* Subtle scale-down for cards underneath — pure CSS, no JS */
-                transform: `scale(${1 - index * 0.02})`,
-                transformOrigin: 'top center',
-              }}
+              ref={(el) => { cardRefs.current[index] = el; }}
             >
-              {/* Left — image ~60% */}
+              {/* Left — image 60% */}
               <div className="project-image-wrap">
                 <Image
                   src={project.image}
@@ -111,7 +161,7 @@ const Projects: React.FC = () => {
                 />
               </div>
 
-              {/* Right — info panel ~40% */}
+              {/* Right — info 40% */}
               <div className="project-info-panel">
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-desc">{project.description}</p>
