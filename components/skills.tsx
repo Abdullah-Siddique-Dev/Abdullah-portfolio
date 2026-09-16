@@ -25,20 +25,19 @@ const skills = [
 function SkillCard({ skill }: { skill: typeof skills[0] }) {
   return (
     <motion.div
-      className="group relative flex flex-col items-center justify-center gap-3 px-6 py-6 rounded-xl border border-white/8 bg-white/3 cursor-default select-none"
-      style={{ minWidth: "120px" }}
+      className="group relative flex flex-col items-center justify-center gap-2 md:gap-3 px-4 md:px-6 py-4 md:py-6 rounded-xl border border-white/8 bg-white/3 cursor-default select-none min-w-[100px] md:min-w-[120px]"
       whileHover={{ y: -4, scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
       {/* Icon */}
-      <div className="w-12 h-12 flex items-center justify-center">
+      <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
         <img
           src={skill.icon}
           alt={skill.name}
           width={48}
           height={48}
           className={[
-            "w-12 h-12 object-contain transition-all duration-300",
+            "w-10 h-10 md:w-12 md:h-12 object-contain transition-all duration-300",
             skill.whiteIcon
               // White icons: dim with low opacity + invert to make dark, hover restores white
               ? "opacity-20 invert group-hover:opacity-90 group-hover:invert"
@@ -69,28 +68,28 @@ export default function Skills() {
   const track = [...skills, ...skills];
 
   return (
-    <section id="skills" className="relative w-full bg-[#000000] py-20 overflow-hidden">
+    <section id="skills" className="relative w-full bg-[#000000] py-16 md:py-20 overflow-hidden">
 
       {/* Section label */}
-      <div className="flex items-center justify-center gap-4 mb-14">
-        <div className="h-px w-12 bg-violet-500/40" />
-        <span className="text-xs tracking-[0.3em] uppercase text-violet-400 font-medium">
+      <div className="flex items-center justify-center gap-3 md:gap-4 mb-10 md:mb-14 px-4">
+        <div className="h-px w-8 sm:w-12 bg-violet-500/40" />
+        <span className="text-xs tracking-[0.25em] md:tracking-[0.3em] uppercase text-violet-400 font-medium text-center">
           Skills &amp; Technologies
         </span>
-        <div className="h-px w-12 bg-violet-500/40" />
+        <div className="h-px w-8 sm:w-12 bg-violet-500/40" />
       </div>
 
       {/* Marquee */}
       <div className="relative w-full overflow-hidden">
         {/* Left fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 z-10 pointer-events-none"
           style={{ background: "linear-gradient(to right, #000000 0%, transparent 100%)" }} />
         {/* Right fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 z-10 pointer-events-none"
           style={{ background: "linear-gradient(to left, #000000 0%, transparent 100%)" }} />
 
         <motion.div
-          className="flex gap-4"
+          className="flex gap-3 md:gap-4"
           style={{ width: "max-content" }}
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 35, repeat: Infinity, ease: "linear", repeatType: "loop" }}

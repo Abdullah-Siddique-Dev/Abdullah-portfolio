@@ -48,7 +48,7 @@ const footerColumns = [
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-[#0a0a0a] border-t border-white/10 overflow-hidden min-h-[420px]">
+    <footer className="relative w-full bg-[#0a0a0a] border-t border-white/10 overflow-hidden min-h-[380px] md:min-h-[420px]">
 
       {/* BIG watermark logo — top right corner */}
       <img
@@ -57,8 +57,8 @@ export default function Footer() {
         aria-hidden="true"
         className="absolute select-none pointer-events-none hidden md:block"
         style={{
-          width: "600px",
-          height: "600px",
+          width: "500px",
+          height: "500px",
           objectFit: "contain",
           opacity: 0.1,
           filter: "brightness(3) contrast(1.5)",
@@ -69,23 +69,23 @@ export default function Footer() {
       />
 
       {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-12 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 items-start">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-10 md:pt-12 pb-16 md:pb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 items-start">
 
           {/* Left: logo + bio + socials */}
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4 md:gap-5 text-center sm:text-left">
             <img
               src="/logo.png"
               alt="Abdullah Siddique Logo"
-              width={130}
-              height={130}
-              className="object-contain"
+              width={110}
+              height={110}
+              className="object-contain mx-auto sm:mx-0"
             />
-            <p className="text-sm text-neutral-400 leading-relaxed max-w-[220px]">
+            <p className="text-sm text-neutral-400 leading-relaxed max-w-[220px] mx-auto sm:mx-0">
               Computer Science student, MERN Stack Developer, and problem solver
               passionate about building impactful digital solutions.
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 justify-center sm:justify-start">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -110,7 +110,7 @@ export default function Footer() {
 
           {/* Link columns */}
           {footerColumns.map((col) => (
-            <div key={col.title} className="flex flex-col gap-4">
+            <div key={col.title} className="flex flex-col gap-3 md:gap-4 text-center sm:text-left">
               <span className="text-sm font-semibold text-white">
                 {col.title}
               </span>
@@ -135,13 +135,13 @@ export default function Footer() {
       {/* Big outlined name — half hidden at footer bottom */}
       <div
         className="relative z-0 select-none pointer-events-none overflow-hidden"
-        style={{ height: "clamp(3rem, 10vw, 8rem)" }}
+        style={{ height: "clamp(2.5rem, 8vw, 8rem)" }}
         aria-hidden="true"
       >
         <p
           className="text-center font-black uppercase leading-none tracking-tight absolute bottom-0 left-0 right-0 translate-y-[35%]"
           style={{
-            fontSize: "clamp(3.5rem, 14vw, 11rem)",
+            fontSize: "clamp(2.5rem, 12vw, 11rem)",
             color: "transparent",
             WebkitTextStroke: "1.5px rgba(255,255,255,0.18)",
           }}

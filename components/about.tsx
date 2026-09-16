@@ -31,7 +31,7 @@ function TypingHeading() {
   return (
     <h2
       ref={ref}
-      className="text-4xl lg:text-5xl font-black tracking-tight text-white min-h-[1.2em]"
+      className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white min-h-[1.2em]"
       style={{ fontFamily: "var(--font-playfair), 'Times New Roman', serif" }}
     >
       {displayed}
@@ -50,7 +50,7 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative w-full bg-[#0a0812] py-24 overflow-hidden"
+      className="relative w-full bg-[#0a0812] py-16 md:py-24 overflow-hidden"
     >
       {/* Subtle background glow */}
       <div
@@ -63,26 +63,26 @@ export default function About() {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
         {/* Section label — centered */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="flex items-center justify-center gap-4 mb-16"
+          className="flex items-center justify-center gap-3 md:gap-4 mb-12 md:mb-16"
         >
-          <div className="h-px w-12 bg-violet-500/50" />
-          <span className="text-xs tracking-[0.3em] uppercase text-violet-400 font-medium">
+          <div className="h-px w-8 sm:w-12 bg-violet-500/50" />
+          <span className="text-xs tracking-[0.25em] md:tracking-[0.3em] uppercase text-violet-400 font-medium">
             About
           </span>
-          <div className="h-px w-12 bg-violet-500/50" />
+          <div className="h-px w-8 sm:w-12 bg-violet-500/50" />
         </motion.div>
 
         {/* Main grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center">
 
-          {/* LEFT: Picture — square, fixed size */}
+          {/* LEFT: Picture — square, responsive size */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -90,9 +90,9 @@ export default function About() {
             className="relative flex justify-center"
           >
             {/* Left blur */}
-            <div className="absolute pointer-events-none" style={{ left: "-50px", top: "50%", transform: "translateY(-50%)", width: "130px", height: "110%", background: "radial-gradient(ellipse at right, rgba(124,58,237,0.5) 0%, transparent 70%)", filter: "blur(35px)", zIndex: 0 }} />
+            <div className="absolute pointer-events-none hidden sm:block" style={{ left: "-50px", top: "50%", transform: "translateY(-50%)", width: "130px", height: "110%", background: "radial-gradient(ellipse at right, rgba(124,58,237,0.5) 0%, transparent 70%)", filter: "blur(35px)", zIndex: 0 }} />
             {/* Right blur */}
-            <div className="absolute pointer-events-none" style={{ right: "-50px", top: "50%", transform: "translateY(-50%)", width: "130px", height: "110%", background: "radial-gradient(ellipse at left, rgba(124,58,237,0.35) 0%, transparent 70%)", filter: "blur(35px)", zIndex: 0 }} />
+            <div className="absolute pointer-events-none hidden sm:block" style={{ right: "-50px", top: "50%", transform: "translateY(-50%)", width: "130px", height: "110%", background: "radial-gradient(ellipse at left, rgba(124,58,237,0.35) 0%, transparent 70%)", filter: "blur(35px)", zIndex: 0 }} />
 
             {/* Square image wrapped in BorderGlow */}
             <BorderGlow
@@ -108,24 +108,15 @@ export default function About() {
               fillOpacity={0.3}
             >
               <div
-                style={{
-                  width: "320px",
-                  height: "320px",
-                  overflow: "hidden",
-                  borderRadius: "11px",
-                  flexShrink: 0,
-                }}
+                className="w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] overflow-hidden rounded-[11px] flex-shrink-0"
               >
                 <img
                   src="/about.jpeg"
                   alt="Abdullah Siddique"
+                  className="w-full h-full object-cover block"
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
                     objectPosition: "center 20%",
                     filter: "brightness(0.85) contrast(1.05) saturate(0.8)",
-                    display: "block",
                   }}
                 />
               </div>
@@ -137,19 +128,19 @@ export default function About() {
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col gap-7"
+            className="flex flex-col gap-5 md:gap-7 text-center lg:text-left"
           >
             {/* Typing heading */}
             <TypingHeading />
 
             {/* Violet accent line */}
             <div
-              className="w-16 h-[3px] rounded-full"
+              className="w-16 h-[3px] rounded-full mx-auto lg:mx-0"
               style={{ background: "#7c3aed" }}
             />
 
             {/* Body text */}
-            <p className="text-neutral-400 text-base lg:text-lg leading-[1.9] font-light">
+            <p className="text-neutral-400 text-sm sm:text-base lg:text-lg leading-[1.8] md:leading-[1.9] font-light">
               I build modern web applications that combine{" "}
               <span className="text-white font-medium">clean design</span> with{" "}
               <span className="text-white font-medium">powerful functionality</span>.
@@ -164,7 +155,7 @@ export default function About() {
               modern web technologies.
             </p>
 
-            <p className="text-neutral-400 text-base lg:text-lg leading-[1.9] font-light">
+            <p className="text-neutral-400 text-sm sm:text-base lg:text-lg leading-[1.8] md:leading-[1.9] font-light">
               I&apos;m constantly learning, experimenting with{" "}
               <span className="text-white font-medium">AI</span>, and turning
               innovative ideas into reality.

@@ -105,18 +105,18 @@ const Projects: React.FC = () => {
   }, []);
 
   return (
-    <section id="projects" className="relative bg-[#0d0a18] py-24">
+    <section id="projects" className="relative bg-[#0d0a18] py-16 md:py-24">
 
       {/* Section heading */}
-      <div className="text-center mb-16 px-6">
+      <div className="text-center mb-12 md:mb-16 px-4 sm:px-6">
         <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="h-px w-12 bg-violet-500/40" />
+          <div className="h-px w-8 sm:w-12 bg-violet-500/40" />
           <h2 className="text-xs tracking-[0.3em] uppercase text-violet-400 font-medium">
             My Projects
           </h2>
-          <div className="h-px w-12 bg-violet-500/40" />
+          <div className="h-px w-8 sm:w-12 bg-violet-500/40" />
         </div>
-        <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
+        <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed px-4">
           Explore my portfolio of full-stack applications, each built with modern technologies
           and designed to solve real-world problems with elegant user experiences.
         </p>
@@ -128,7 +128,7 @@ const Projects: React.FC = () => {
         - Each slot is sticky at exactly the same `top` so all cards align perfectly
       */}
       <div
-        className="mx-auto px-6"
+        className="mx-auto px-4 sm:px-6"
         style={{
           maxWidth: '62rem',
           paddingBottom: `${(projects.length - 1) * (CARD_HEIGHT + CARD_GAP)}px`,
