@@ -40,9 +40,6 @@ export default function NavbarDemo() {
           <NavBody>
             <NavbarLogo />
             <NavItems items={navItems} />
-            <NavbarButton variant="primary" href="#contact" className="shrink-0">
-              Hire Me
-            </NavbarButton>
           </NavBody>
         </Navbar>
       </div>
