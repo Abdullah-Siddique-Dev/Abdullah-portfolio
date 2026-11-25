@@ -56,7 +56,7 @@ const experiences: ExperienceItem[] = [
     id: 4,
     company: 'CallTire',
     role: 'IT Director',
-    period: 'Jul 2026',
+    period: 'Aug – Oct 2026',
     highlights: [
       'Led IT operations and built a custom PERN stack CRM for automotive roadside assistance and call center dispatch.',
       'Maintained production infrastructure, fleet workflows, and B2B invoicing.',
