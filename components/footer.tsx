@@ -3,34 +3,35 @@
 import {
   IconBrandGithub,
   IconBrandLinkedin,
-  IconBrandX,
   IconBrandWhatsapp,
 } from "@tabler/icons-react";
 
+const LINKEDIN_URL = "https://www.linkedin.com/in/muhammad-abdullah-siddique-31815432b/";
+const GITHUB_URL = "https://github.com/Abdullah-Siddique-Dev";
+const EMAIL_URL = "mailto:abdullahsiddique.dev.ai@gmail.com";
+
 const socialLinks = [
-  { icon: IconBrandLinkedin,  href: "#", label: "LinkedIn" },
-  { icon: IconBrandGithub,    href: "#", label: "GitHub" },
-  { icon: IconBrandX,         href: "#", label: "Twitter" },
-  { icon: IconBrandWhatsapp,  href: "#", label: "WhatsApp" },
+  { icon: IconBrandLinkedin, href: LINKEDIN_URL, label: "LinkedIn" },
+  { icon: IconBrandGithub,   href: GITHUB_URL,   label: "GitHub" },
+  { icon: IconBrandWhatsapp, href: "#",          label: "WhatsApp" },
 ];
 
 const footerColumns = [
   {
     title: "General",
     links: [
-      { label: "Home",       href: "#home" },
-      { label: "About Me",   href: "#about" },
-      { label: "Projects",   href: "#projects" },
-      { label: "Blog",       href: "#blog" },
-      { label: "Contact",    href: "#contact" },
+      { label: "Home",     href: "#home" },
+      { label: "About Me", href: "#about" },
+      { label: "Projects", href: "#projects" },
+      { label: "Contact",  href: "#contact" },
     ],
   },
   {
     title: "Resources",
     links: [
       { label: "Resume",       href: "#" },
-      { label: "GitHub",       href: "#" },
-      { label: "Certificates", href: "#" },
+      { label: "GitHub",       href: GITHUB_URL },
+      { label: "Certificates", href: LINKEDIN_URL },
       { label: "Skills",       href: "#skills" },
       { label: "Experience",   href: "#experience" },
     ],
@@ -38,10 +39,9 @@ const footerColumns = [
   {
     title: "Connect",
     links: [
-      { label: "LinkedIn", href: "#" },
-      { label: "GitHub",   href: "#" },
-      { label: "Email",    href: "#" },
-      { label: "Twitter",  href: "#" },
+      { label: "LinkedIn", href: LINKEDIN_URL },
+      { label: "GitHub",   href: GITHUB_URL },
+      { label: "Email",    href: EMAIL_URL },
     ],
   },
 ];
@@ -91,6 +91,8 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="relative flex items-center justify-center w-9 h-9 rounded-full border border-white/20 text-neutral-400 hover:text-white transition-all duration-300 group"
                   style={{ background: "rgba(255,255,255,0.04)" }}
                 >
@@ -119,6 +121,8 @@ export default function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
+                      target={link.href.startsWith("http") ? "_blank" : undefined}
+                      rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                       className="text-sm text-neutral-400 hover:text-white transition-colors duration-200"
                     >
                       {link.label}

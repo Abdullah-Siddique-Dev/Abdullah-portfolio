@@ -21,7 +21,7 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Xtreme Fleet CRM",
+    title: "CallTire Fleet CRM",
     description: "A specialized call center CRM and live dispatch system for automotive roadside assistance and fleet management. Features real-time job dispatching, driver and vehicle tracking, service request logging, and automated B2B invoicing.",
     image: "/projects/Xtreme Fleet CRM.jpg",
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS", "Socket.io", "Prisma"],
@@ -152,17 +152,16 @@ const Projects: React.FC = () => {
         className="mx-auto px-4 sm:px-6"
         style={{
           maxWidth: '62rem',
-          paddingBottom: `${(projects.length - 1) * (CARD_HEIGHT + CARD_GAP)}px`,
         }}
       >
         {projects.map((project, index) => (
           <div
             key={project.id}
+            className="h-auto lg:h-[520px]"
             style={{
               position: 'sticky',
               top: `${STICK_TOP}px`,
               zIndex: index + 1,
-              height: `${CARD_HEIGHT}px`,
               marginBottom: index < projects.length - 1 ? `${CARD_GAP}px` : 0,
             }}
           >
